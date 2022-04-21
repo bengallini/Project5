@@ -11,8 +11,9 @@ public class FileReader {
     private Race race;
     public final static int NUM_STATES = 6;
 
-    public FileReader(String fileName) {
-        //comments
+    public FileReader(String fileName) throws FileNotFoundException {
+        states = CFRReader(fileName);
+        
     }
 
     private State[] CFRReader(String fileName) throws FileNotFoundException {
@@ -50,7 +51,6 @@ public class FileReader {
                 int asiandeath = nums[9];
                 int otherdeath = nums[10];
                 
-                //change
 
 
                 Race whiterace = new Race("white", white, whitedeath);
@@ -67,6 +67,7 @@ public class FileReader {
                 tempz.add(otherrace);
                 
                 states[lineCount] = tempz; 
+                System.out.println(tempz);
             } 
         }
         return states;

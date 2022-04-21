@@ -8,8 +8,7 @@ import java.util.Iterator;
  * @author Benjamin Gallini (bengallini)
  * @version 2022.4.21
  */
-public class State extends DoublyLinkedList<Race> {
-
+public class State extends LinkedList<Race> {
     private String name;
 
     /**
@@ -39,10 +38,10 @@ public class State extends DoublyLinkedList<Race> {
      */
     public void sortAlpha() {
         if (getSize() > 1) {
-            Node<Race> unsorted = getHead().getNextNode();
-            Node<Race> sorted = getHead();
+            Node<Race> unsorted = getHead().getNextNode().getNextNode();
+            Node<Race> sorted = getHead().getNextNode();
             sorted.setNextNode(null);
-            while (unsorted != getTail()) {
+            while (unsorted != null) {
                 Node<Race> insert = unsorted;
                 unsorted = unsorted.getNextNode();
                 insertIntoSortedAlpha(insert);
@@ -59,25 +58,25 @@ public class State extends DoublyLinkedList<Race> {
      */
     private void insertIntoSortedAlpha(Node<Race> insert) {
         Race item = insert.getData();
-        Node<Race> current = insert.getNextNode();
+        Node<Race> current = getHead().getNextNode();
         Node<Race> previous = null;
 
-        while ((current != getTail()) && item.compareToAlpha(current
+        while ((current != null) && item.compareToAlpha(current
             .getData()) > 0) {
             previous = current;
             current = current.getNextNode();
         }
 
-        if (previous != getHead()) {
+        if (previous != null) {
             previous.setNextNode(insert);
-            insert.setPreviousNode(previous);
+
             insert.setNextNode(current);
-            current.setPreviousNode(insert);
+
         }
         else {
-            getHead().getNextNode().setPreviousNode(insert);
-            insert.setNextNode(getHead().getNextNode());
-            insert.setPreviousNode(getHead());
+            if (getHead().getNextNode() != null) {
+                insert.setNextNode(getHead().getNextNode());
+            }
             getHead().setNextNode(insert);
         }
     }
@@ -88,10 +87,10 @@ public class State extends DoublyLinkedList<Race> {
      */
     public void sortCFR() {
         if (getSize() > 1) {
-            Node<Race> unsorted = getHead().getNextNode();
-            Node<Race> sorted = getHead();
+            Node<Race> unsorted = getHead().getNextNode().getNextNode();
+            Node<Race> sorted = getHead().getNextNode();
             sorted.setNextNode(null);
-            while (unsorted != getTail()) {
+            while (unsorted != null) {
                 Node<Race> insert = unsorted;
                 unsorted = unsorted.getNextNode();
                 insertIntoSortedCFR(insert);
@@ -108,29 +107,27 @@ public class State extends DoublyLinkedList<Race> {
      */
     private void insertIntoSortedCFR(Node<Race> insert) {
         Race item = insert.getData();
-        Node<Race> current = insert.getNextNode();
+        Node<Race> current = getHead().getNextNode();
         Node<Race> previous = null;
 
-        while ((current != getTail()) && item.compareTo(current
-            .getData()) > 0) {
+        while ((current != null) && item.compareTo(current.getData()) > 0) {
             previous = current;
             current = current.getNextNode();
         }
 
-        if (previous != getHead()) {
+        if (previous != null) {
             previous.setNextNode(insert);
-            insert.setPreviousNode(previous);
             insert.setNextNode(current);
-            current.setPreviousNode(insert);
         }
         else {
-            getHead().getNextNode().setPreviousNode(insert);
-            insert.setNextNode(getHead().getNextNode());
-            insert.setPreviousNode(getHead());
+            if (getHead().getNextNode() != null) {
+                insert.setNextNode(getHead().getNextNode());
+            }
             getHead().setNextNode(insert);
         }
     }
-    
+
+
     /**
      * Converts the state to a string
      * 
@@ -139,21 +136,21 @@ public class State extends DoublyLinkedList<Race> {
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append(name);
-        str.append("/n");
+        str.append("\n");
         sortAlpha();
         Iterator<Race> itr = iterator();
-        while(itr.hasNext()) {
+        while (itr.hasNext()) {
             str.append(itr.next().toString());
-            str.append("/n");
+            str.append("\n");
         }
-        str.append("=====/n");
+        str.append("=====\n");
         sortCFR();
         Iterator<Race> itr2 = iterator();
-        while(itr2.hasNext()) {
+        while (itr2.hasNext()) {
             str.append(itr2.next().toString());
-            str.append("/n");
+            str.append("\n");
         }
-        str.append("=====");
+        str.append("=====\n");
         return str.toString();
     }
 }
