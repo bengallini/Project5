@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="Project5/src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CollectionDisplay"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CS2GraphWindowLib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CS2-Support"/>
+	<classpathentry kind="output" path="Project5/bin"/>
+</classpath>
