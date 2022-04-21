@@ -40,7 +40,23 @@ public class DoublyLinkedList<T> {
         return size;
     }
 
-
+    /**
+     * Returns the head
+     * 
+     * @return head
+     */
+    public Node<T> getHead(){
+        return head;
+    }
+    
+    /**
+     * Returns the tail
+     * 
+     * @return tail
+     */
+    public Node<T> getTail(){
+        return tail;
+    }
     /**
      * Gets if the string is empty
      * 
@@ -206,7 +222,7 @@ public class DoublyLinkedList<T> {
      * @param <T>
      *            The type being stored in the list
      */
-    private static class Node<T> {
+    static class Node<T> {
         private Node<T> next;
         private Node<T> previous;
         private T data;
