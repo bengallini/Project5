@@ -34,17 +34,21 @@ public class FileReader {
                     tokenCount++;
                 }
                 currLine.close();
+                Integer[] nums = new Integer[10];
                 String name = vals[0];
-                int white = Integer.valueOf(vals[1]);
-                int black = Integer.valueOf(vals[2]);
-                int latinx = Integer.valueOf(vals[3]);
-                int asian = Integer.valueOf(vals[4]);
-                int other = Integer.valueOf(vals[5]);
-                int whitedeath = Integer.valueOf(vals[6]);
-                int blackdeath = Integer.valueOf(vals[7]);
-                int latinodeath = Integer.valueOf(vals[8]);
-                int asiandeath = Integer.valueOf(vals[9]);
-                int otherdeath = Integer.valueOf(vals[10]);
+                for (int i = 1; i < vals.length; i++) {
+                    nums[i] = NAFinder(vals[i]);
+                }
+                int white = nums[1];
+                int black = nums[2];
+                int latinx = nums[3];
+                int asian = nums[4];
+                int other = nums[5];
+                int whitedeath = nums[6];
+                int blackdeath = nums[7];
+                int latinodeath = nums[8];
+                int asiandeath = nums[9];
+                int otherdeath = nums[10];
 
                 /**
                 Race whiterace = new Race("white", white, whitedeath);
@@ -65,6 +69,13 @@ public class FileReader {
             } 
         }
         return states;
+    }
+    
+    private int NAFinder(String str) {
+        if (str.equals("NA")) {
+            return -1;
+        }
+        return Integer.valueOf(str);
     }
 
 }
