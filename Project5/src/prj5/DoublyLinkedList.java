@@ -361,7 +361,7 @@ public class DoublyLinkedList<T> {
 
         @Override
         /**
-         * Gets the iterator for the previous item
+         * Gets the iterator for the previous items
          * 
          * @return the iterator
          */
