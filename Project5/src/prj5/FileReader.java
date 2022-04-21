@@ -46,17 +46,17 @@ public class FileReader {
                 int other = nums[5];
                 int whitedeath = nums[6];
                 int blackdeath = nums[7];
-                int latinodeath = nums[8];
+                int latinxdeath = nums[8];
                 int asiandeath = nums[9];
                 int otherdeath = nums[10];
 
-                /**
+
                 Race whiterace = new Race("white", white, whitedeath);
                 Race blackrace = new Race("black", black, blackdeath);
-                Race latinorace = new Race("latinx", latinx, latinodeath);
+                Race latinxrace = new Race("latinx", latinx, latinxdeath);
                 Race asianrace = new Race("asian", asian, asiandeath);
                 Race otherrace = new Race("other", other, otherdeath);
-
+                
                 State tempz = new State(name);
                 tempz.add(whiterace);
                 tempz.add(blackrace);
@@ -64,8 +64,7 @@ public class FileReader {
                 tempz.add(asianrace);
                 tempz.add(otherrace);
                 
-                states[lineCount] = tempz;
-                **/  
+                states[lineCount] = tempz; 
             } 
         }
         return states;
