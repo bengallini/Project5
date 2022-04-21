@@ -34,4 +34,17 @@ public class RaceTest extends TestCase{
         Race temp2 = new Race("black", 100, 50);
         assertTrue(race.compareTo(temp2) > 0);
     }
+    
+    
+    public void testToString() {
+        String str = "white: 100 cases, 50% CFR";
+        Race temp2 = new Race("black", 105, 67);
+        String str2 = "black: 105 cases, 63.8% CFR";
+        Race temp3 = new Race("black", 112, 3);
+        String str3 = "black: 112 cases, 2.7% CFR";
+        
+        assertEquals(race.toString(), str);
+        assertEquals(temp2.toString(), str2);
+        assertEquals(temp3.toString(), str3);
+    }
 }

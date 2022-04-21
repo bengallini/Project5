@@ -1,5 +1,7 @@
 package prj5;
 
+import java.text.DecimalFormat;
+
 /**
  * Race class
  * 
@@ -68,6 +70,7 @@ public class Race implements Comparable<Race> {
             return -1;
         }
         else{
+            
             return CFR;
         }
     }
@@ -100,6 +103,19 @@ public class Race implements Comparable<Race> {
         else {
             return compareToAlpha(o);
         }
+    }
+    
+    
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(ethnicity + ": " + cases + " cases, ");
+        String temp = String.format("%.1f", this.getCFR());
+        if (temp.contains(".0")) {
+            temp = String.format("%.0f", this.getCFR());
+        }
+        str.append(temp + "% CFR");
+        
+        return str.toString();
     }
 
 }
