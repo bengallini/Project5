@@ -49,6 +49,8 @@ public class FileReader {
                 int latinxdeath = nums[8];
                 int asiandeath = nums[9];
                 int otherdeath = nums[10];
+                
+                //change
 
 
                 Race whiterace = new Race("white", white, whitedeath);
