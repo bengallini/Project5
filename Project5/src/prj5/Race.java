@@ -23,7 +23,7 @@ public class Race implements Comparable<Race> {
      */
     public Race(String race, int cases, int death) {
         ethnicity = race;
-        this.cases = Math.abs(cases);
+        this.cases = cases;
         deaths = death;
     }
 
@@ -63,7 +63,13 @@ public class Race implements Comparable<Race> {
      * @return CFR
      */
     public double getCFR() {
-        return (deaths / cases) * 100;
+        double CFR = (deaths / Math.abs(cases)) * 100;
+        if(CFR < 0) {
+            return -1;
+        }
+        else{
+        return CFR;
+        }
     }
 
 
