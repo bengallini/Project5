@@ -63,12 +63,12 @@ public class Race implements Comparable<Race> {
      * @return CFR
      */
     public double getCFR() {
-        double CFR = (deaths / Math.abs(cases)) * 100;
+        double CFR = ( (double) deaths / Math.abs(cases)) * 100;
         if(CFR < 0) {
             return -1;
         }
         else{
-        return CFR;
+            return CFR;
         }
     }
 
@@ -98,7 +98,7 @@ public class Race implements Comparable<Race> {
             return (int)(this.getCFR() - o.getCFR());
         }
         else {
-            return this.ethnicity.compareTo(o.ethnicity);
+            return compareToAlpha(o);
         }
     }
 
