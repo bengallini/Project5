@@ -1,14 +1,26 @@
 package prj5;
 import student.TestCase;
 
-public class RaceTest extends TestCase{
+/**
+ * Test class for Race
+ * 
+ * @author Prakash Jawahar (jprakash)
+ * @version 2022.4.21
+ */ 
+public class RaceTest extends TestCase {
 
     private Race race;
     
+    /**
+     * Sets up each test
+     */
     public void setUp() {
         race = new Race("white", 100, 50);
     }
     
+    /**
+     * Tests the getter methods
+     */
     public void testGetters() {
         assertEquals(race.getCases(), 100);
         assertEquals(race.getDeaths(), 50);
@@ -19,6 +31,9 @@ public class RaceTest extends TestCase{
         assertEquals(temp1.getCFR(), -1, .0001);
     }
     
+    /**
+     * Tests alphaCompare
+     */
     public void testAlphaCompare() {
         Race temp1 = new Race("white", 242, 23);
         assertEquals(race.compareToAlpha(temp1), 0);
@@ -28,14 +43,19 @@ public class RaceTest extends TestCase{
         assertTrue(temp3.compareTo(temp2) < 0);
     }
     
+    /**
+     * Tests compareTo
+     */
     public void testNormCompare() {
         Race temp1 = new Race("white", 100, 70);
-        assertEquals(race.compareTo(temp1), -20);
+        assertEquals(race.compareTo(temp1), -200);
         Race temp2 = new Race("black", 100, 50);
         assertTrue(race.compareTo(temp2) > 0);
     }
     
-    
+    /**
+     * Tests toString
+     */
     public void testToString() {
         String str = "white: 100 cases, 50% CFR";
         Race temp2 = new Race("black", 105, 67);

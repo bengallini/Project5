@@ -2,8 +2,23 @@ package prj5;
 
 import java.io.FileNotFoundException;
 
+/**
+ * Runs the project
+ * 
+ * @author Benjamin Gallini (bengallini)
+ * @version 2022.4.22
+ */
 public class Input {
     
+    /**
+     * Main method, file names can be given as
+     * program arguments
+     * 
+     * @param args
+     *          File names
+     * @throws FileNotFoundException
+     *          If there is no file found under the given name
+     */
     public static void main(String[] args) throws FileNotFoundException {
         
         if(args.length > 0) {

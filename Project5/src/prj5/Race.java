@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
  * 
  * @author Benjamin Gallini (bengallini)
  * @version 2022.4.21
- */
+ */ 
 public class Race implements Comparable<Race> {
     private String ethnicity;
     private int cases;
@@ -105,7 +105,11 @@ public class Race implements Comparable<Race> {
         }
     }
     
-    
+    /**
+     * Converts the race into a string
+     * 
+     * @return The string
+     */
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append(ethnicity + ": " + cases + " cases, ");

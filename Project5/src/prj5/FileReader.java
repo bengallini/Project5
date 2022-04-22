@@ -5,17 +5,44 @@ import java.text.ParseException;
 import java.util.Scanner;
 import student.IOHelper;
 
+/**
+ * Reads the file and creates a state object with the data
+ * 
+ * @author Prakash Jawahar (jprakash)
+ * @version 2022.4.21
+ */
 public class FileReader {
 
     private State[] states;
     private Race race;
+    
+    /**
+     * The max number of states
+     */
     public final static int NUM_STATES = 6;
 
+    /**
+     * Creates a new FileReader object
+     * 
+     * @param fileName
+     *          The file to read
+     * @throws FileNotFoundException
+     *          If there is no file found under the given name
+     */
     public FileReader(String fileName) throws FileNotFoundException {
         states = CFRReader(fileName);
         
     }
 
+    /**
+     * Creates an array of states from the file
+     * 
+     * @param fileName 
+     *          The file to read
+     * @return Array of states
+     * @throws FileNotFoundException 
+     *          If there is no file found under the given name
+     */
     private State[] CFRReader(String fileName) throws FileNotFoundException {
         states = new State[NUM_STATES];
         File news = new File(fileName);
@@ -71,6 +98,13 @@ public class FileReader {
         return states;
     }
     
+    /**
+     * Checks to see if an entry is NA
+     * 
+     * @param str
+     *          The entry
+     * @return -1 if NA, the data's value if not
+     */
     private int NAFinder(String str) {
         
         if (str.equals("NA")) {
