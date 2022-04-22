@@ -25,33 +25,30 @@ public class FileReader {
         while (file.hasNextLine() && lineCount < 6) {
             String line = file.nextLine();
              if (lineCount > 0) {               
-                System.out.println("Line: " + lineCount);
                 Scanner currLine = new Scanner(line).useDelimiter(",\\s*");
                 String vals[] = new String[11];
 
                 int tokenCount = 0;
                 while (currLine.hasNext() && tokenCount < 11) {
                     vals[tokenCount] = currLine.next();
-                    System.out.println(vals[tokenCount]);
                     tokenCount++;
                 }
                 currLine.close();
                 Integer[] nums = new Integer[10];
                 String name = vals[0];
-                for (int i = 1; i < vals.length + 1; i++) {
-                    nums[i] = NAFinder(vals[i]);
+                for (int i = 1; i < vals.length; i++) {
+                    nums[i-1] = NAFinder(vals[i]);
                 }
-                System.out.println(name);
-                int white = nums[1];
-                int black = nums[2];
-                int latinx = nums[3];
-                int asian = nums[4];
-                int other = nums[5];
-                int whitedeath = nums[6];
-                int blackdeath = nums[7];
-                int latinxdeath = nums[8];
-                int asiandeath = nums[9];
-                int otherdeath = nums[10];
+                int white = nums[0];
+                int black = nums[1];
+                int latinx = nums[2];
+                int asian = nums[3];
+                int other = nums[4];
+                int whitedeath = nums[5];
+                int blackdeath = nums[6];
+                int latinxdeath = nums[7];
+                int asiandeath = nums[8];
+                int otherdeath = nums[9];
                 
                 Race whiterace = new Race("white", white, whitedeath);
                 Race blackrace = new Race("black", black, blackdeath);
@@ -66,7 +63,7 @@ public class FileReader {
                 tempz.add(otherrace);
                 
                 states[lineCount] = tempz; 
-                //System.out.println(tempz);
+                System.out.println(tempz);
             } 
             lineCount++;
         }

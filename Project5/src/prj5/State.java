@@ -150,7 +150,7 @@ public class State extends LinkedList<Race> {
             str.append(itr2.next().toString());
             str.append("\n");
         }
-        str.append("=====\n");
+        str.append("=====");
         return str.toString();
     }
 }
