@@ -98,7 +98,7 @@ public class Race implements Comparable<Race> {
      */
     public int compareTo(Race o) {
         if (this.getCFR() != o.getCFR()) {
-            return (int)(this.getCFR() - o.getCFR());
+            return (int)(10*(this.getCFR() - o.getCFR())); //Multiplied by 10 to avoid data loss when multiplying by 10
         }
         else {
             return compareToAlpha(o);

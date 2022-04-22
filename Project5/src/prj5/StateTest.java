@@ -39,11 +39,11 @@ public class StateTest extends TestCase {
         str.append(white.toString());
         str.append("\n");
         str.append("=====\n");
-        str.append(white.toString());
+        str.append(black.toString());
         str.append("\n");
         str.append(latinx.toString());
         str.append("\n");
-        str.append(black.toString());
+        str.append(white.toString());
         str.append("\n");
         str.append("=====");
         assertEquals(state.toString(), str.toString());

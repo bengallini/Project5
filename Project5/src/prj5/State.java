@@ -110,7 +110,7 @@ public class State extends LinkedList<Race> {
         Node<Race> current = getHead().getNextNode();
         Node<Race> previous = null;
 
-        while ((current != null) && item.compareTo(current.getData()) > 0) {
+        while ((current != null) && item.compareTo(current.getData()) < 0) {
             previous = current;
             current = current.getNextNode();
         }
