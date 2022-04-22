@@ -1,13 +1,11 @@
 package prj5;
 
-import java.text.DecimalFormat;
-
 /**
  * Race class
  * 
  * @author Benjamin Gallini (bengallini)
  * @version 2022.4.21
- */ 
+ */
 public class Race implements Comparable<Race> {
     private String ethnicity;
     private int cases;
@@ -28,6 +26,7 @@ public class Race implements Comparable<Race> {
         this.cases = cases;
         deaths = death;
     }
+
 
     /**
      * Returns the race name
@@ -62,16 +61,16 @@ public class Race implements Comparable<Race> {
     /**
      * Calculates based the CFR
      * 
-     * @return CFR
+     * @return cfr
      */
     public double getCFR() {
-        double CFR = ( (double) deaths / Math.abs(cases)) * 100;
-        if(CFR < 0) {
+        double cfr = ((double)deaths / Math.abs(cases)) * 100;
+        if (cfr < 0) {
             return -1;
         }
-        else{
-            
-            return CFR;
+        else {
+
+            return cfr;
         }
     }
 
@@ -98,13 +97,19 @@ public class Race implements Comparable<Race> {
      */
     public int compareTo(Race o) {
         if (this.getCFR() != o.getCFR()) {
-            return (int)(10*(this.getCFR() - o.getCFR())); //Multiplied by 10 to avoid data loss when multiplying by 10
+            return (int)(100 * (o.getCFR() - this.getCFR())); // Multiplied by
+                                                              // 100
+                                                              // to avoid data
+                                                              // loss when
+                                                              // multiplying by
+                                                              // 10
         }
         else {
             return compareToAlpha(o);
         }
     }
-    
+
+
     /**
      * Converts the race into a string
      * 
@@ -118,7 +123,7 @@ public class Race implements Comparable<Race> {
             temp = String.format("%.0f", this.getCFR());
         }
         str.append(temp + "% CFR");
-        
+
         return str.toString();
     }
 

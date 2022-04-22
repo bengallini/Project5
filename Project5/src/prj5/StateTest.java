@@ -1,6 +1,5 @@
 package prj5;
 
-import java.util.Iterator;
 import student.TestCase;
 
 /**
@@ -11,6 +10,7 @@ import student.TestCase;
  */
 public class StateTest extends TestCase {
     private State state;
+    private State empty;
     private Race white;
     private Race black;
     private Race latinx;
@@ -19,6 +19,7 @@ public class StateTest extends TestCase {
      * Sets up each test
      */
     public void setUp() {
+        empty = new State("Empty");
         state = new State("VA");
         white = new Race("white", 100, 10);
         state.add(white);
@@ -28,12 +29,54 @@ public class StateTest extends TestCase {
         state.add(latinx);
     }
 
+
     /**
      * Tests getName
      */
     public void testGetName() {
         assertEquals(state.getName(), "VA");
     }
+
+
+    /**
+     * Tests sortAlpha()
+     */
+    public void testSortAlpha() {
+        State compare = empty;
+        empty.sortAlpha();
+        assertEquals(compare.toString(), empty.toString());
+        compare.add(black);
+        compare.add(latinx);
+        compare.add(white);
+        compare.add(black);
+        compare.add(latinx);
+        compare.sortAlpha();
+        empty.add(black);
+        empty.add(black);
+        empty.add(latinx);
+        empty.add(latinx);
+        empty.add(white);
+        assertEquals(compare.toString(), empty.toString());
+    }
+
+
+    /**
+     * Tests sortCFR()
+     */
+    public void testSortCFR() {
+        State compare = empty;
+        empty.sortCFR();
+        assertEquals(compare.toString(), empty.toString());
+        compare.add(latinx);
+        compare.add(white);
+        compare.add(black);
+        compare.sortCFR();
+        empty.add(black);
+        empty.add(latinx);
+        empty.add(white);
+        assertEquals(compare.toString(), empty.toString());
+    }
+
 
     /**
      * Tests toString
@@ -57,5 +100,5 @@ public class StateTest extends TestCase {
         str.append("\n");
         str.append("=====");
         assertEquals(state.toString(), str.toString());
-        }
+    }
 }

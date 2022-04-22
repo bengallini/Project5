@@ -1,4 +1,5 @@
 package prj5;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -15,33 +16,34 @@ public class FileReader {
 
     private State[] states;
     private Race race;
-    
+
     /**
      * The max number of states
      */
-    public final static int NUM_STATES = 6;
+    public final static int NUM_STATES = 7;
 
     /**
      * Creates a new FileReader object
      * 
      * @param fileName
-     *          The file to read
+     *            The file to read
      * @throws FileNotFoundException
-     *          If there is no file found under the given name
+     *             If there is no file found under the given name
      */
     public FileReader(String fileName) throws FileNotFoundException {
         states = CFRReader(fileName);
-        
+
     }
+
 
     /**
      * Creates an array of states from the file
      * 
-     * @param fileName 
-     *          The file to read
+     * @param fileName
+     *            The file to read
      * @return Array of states
-     * @throws FileNotFoundException 
-     *          If there is no file found under the given name
+     * @throws FileNotFoundException
+     *             If there is no file found under the given name
      */
     private State[] CFRReader(String fileName) throws FileNotFoundException {
         states = new State[NUM_STATES];
@@ -49,9 +51,9 @@ public class FileReader {
         Scanner file = new Scanner(news);
         int lineCount = 0;
 
-        while (file.hasNextLine() && lineCount < 6) {
+        while (file.hasNextLine() && lineCount < 7) {
             String line = file.nextLine();
-             if (lineCount > 0) {               
+            if (lineCount > 0) {
                 Scanner currLine = new Scanner(line).useDelimiter(",\\s*");
                 String vals[] = new String[11];
 
@@ -64,7 +66,7 @@ public class FileReader {
                 Integer[] nums = new Integer[10];
                 String name = vals[0];
                 for (int i = 1; i < vals.length; i++) {
-                    nums[i-1] = NAFinder(vals[i]);
+                    nums[i - 1] = NAFinder(vals[i]);
                 }
                 int white = nums[0];
                 int black = nums[1];
@@ -76,7 +78,7 @@ public class FileReader {
                 int latinxdeath = nums[7];
                 int asiandeath = nums[8];
                 int otherdeath = nums[9];
-                
+
                 Race whiterace = new Race("white", white, whitedeath);
                 Race blackrace = new Race("black", black, blackdeath);
                 Race latinxrace = new Race("latinx", latinx, latinxdeath);
@@ -88,25 +90,26 @@ public class FileReader {
                 tempz.add(latinxrace);
                 tempz.add(asianrace);
                 tempz.add(otherrace);
-                
-                states[lineCount] = tempz; 
+
+                states[lineCount] = tempz;
                 System.out.println(tempz);
-            } 
+            }
             lineCount++;
         }
         file.close();
         return states;
     }
-    
+
+
     /**
      * Checks to see if an entry is NA
      * 
      * @param str
-     *          The entry
+     *            The entry
      * @return -1 if NA, the data's value if not
      */
     private int NAFinder(String str) {
-        
+
         if (str.equals("NA")) {
             return -1;
         }

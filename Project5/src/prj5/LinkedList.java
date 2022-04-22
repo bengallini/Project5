@@ -92,7 +92,7 @@ public class LinkedList<T> {
      * Converts a list to a string
      * "{}" if empty
      * 
-     * @returns the string
+     * @return the string
      */
     public String toString() {
         StringBuilder str = new StringBuilder();
@@ -120,7 +120,7 @@ public class LinkedList<T> {
      * @return iterator
      */
     public Iterator<T> iterator() {
-        return new listIterator<T>();
+        return new ListIterator<T>();
     }
 
     /**
@@ -187,14 +187,14 @@ public class LinkedList<T> {
      * @param <A>
      *            The type being stored in the list
      */
-    private class listIterator<A> implements Iterator<T> {
+    private class ListIterator<A> implements Iterator<T> {
         private Node<T> next;
         private boolean calledNext;
 
         /**
          * Creates an list iterator object
          */
-        public listIterator() {
+        public ListIterator() {
             next = head.getNextNode();
             calledNext = false;
         }

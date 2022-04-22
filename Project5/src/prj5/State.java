@@ -74,9 +74,7 @@ public class State extends LinkedList<Race> {
 
         }
         else {
-            if (getHead().getNextNode() != null) {
-                insert.setNextNode(getHead().getNextNode());
-            }
+            insert.setNextNode(getHead().getNextNode());
             getHead().setNextNode(insert);
         }
     }
@@ -110,7 +108,7 @@ public class State extends LinkedList<Race> {
         Node<Race> current = getHead().getNextNode();
         Node<Race> previous = null;
 
-        while ((current != null) && item.compareTo(current.getData()) < 0) {
+        while ((current != null) && item.compareTo(current.getData()) > 0) {
             previous = current;
             current = current.getNextNode();
         }
@@ -120,9 +118,7 @@ public class State extends LinkedList<Race> {
             insert.setNextNode(current);
         }
         else {
-            if (getHead().getNextNode() != null) {
-                insert.setNextNode(getHead().getNextNode());
-            }
+            insert.setNextNode(getHead().getNextNode());
             getHead().setNextNode(insert);
         }
     }

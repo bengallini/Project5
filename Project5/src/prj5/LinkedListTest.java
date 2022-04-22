@@ -48,6 +48,14 @@ public class LinkedListTest extends TestCase {
 
 
     /**
+     * Test getHead()
+     */
+    public void testGetHead() {
+        assertNull(list.getHead().getData());
+    }
+
+
+    /**
      * Tests clear
      */
     public void testClear() {
