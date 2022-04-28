@@ -32,7 +32,7 @@ public class FileReader {
      */
     public FileReader(String fileName) throws FileNotFoundException {
         states = CFRReader(fileName);
-
+        GUIwindow window = new GUIwindow(states);
     }
 
 
